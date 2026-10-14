@@ -13,7 +13,6 @@ public:
             if (num != val)
                 expected.push_back(num);
         }
-        cout << expected << endl;
         return val;
     }
 };
