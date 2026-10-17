@@ -4,33 +4,24 @@ using namespace std;
 
 class Solution
 {
-
 public:
-    void mergeSort(vector<int> &nums, vector<int> &insertingValue)
+    void merge(vector<int> &nums1, int m, vector<int> &nums2, int n)
     {
-        int len1 = nums.size() - 1;
-        int len2 = insertingValue.size() - 1;
-        int counter = len1 - len2;
-        while (counter != 0)
+        int idx = m + n - 1, i = m - 1, j = n - 1;
+        while (i >= 0 && j >= 0)
         {
-            if (nums[counter] <= insertingValue[len2])
+            if (nums1[i] >= nums2[j])
             {
-                swap(nums[len1], insertingValue[len2]);
-                len1--;
-                len2--;
+                nums1[idx--] = nums1[i--];
             }
-            // if (nums[counter] >= nums[len2])
             else
             {
-                swap(nums[len1], nums[counter]);
-                len1--;
-                counter--;
+                nums1[idx--] = nums2[j--];
             }
-            for (int i = 0; i < nums.size(); i++)
-            {
-                cout << " " << nums[i];
-            }
-            cout << endl;
+        }
+        while (j >= 0)
+        {
+            nums1[idx--] = nums2[j--];
         }
     }
 };
@@ -41,7 +32,12 @@ int main()
     vector<int> insert = {2, 5, 6};
 
     Solution problem;
-    problem.mergeSort(nums, insert);
+    problem.merge(nums, 3, insert, 3);
+
+    for (int i = 0; i < nums.size(); i++)
+    {
+        cout << " " << nums[i];
+    }
 
     return 0;
 }
