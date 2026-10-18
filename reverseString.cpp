@@ -16,7 +16,8 @@ int main()
         st++;
         end--;
     }
+    cout << input << endl;
+    reverse(input.begin(),input.end());
     cout << input;
-
     return 0;
 }
